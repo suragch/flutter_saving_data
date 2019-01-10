@@ -53,42 +53,71 @@ class MyHomePage extends StatelessWidget {
 
   // Shared preferences
 
-//  _read() async {
-//    final prefs = await SharedPreferences.getInstance();
-//    final key = 'my_int_key';
-//    final value = prefs.getInt(key) ?? 0;
-//    print('read: $value');
-//  }
-//
-//  _save() async {
-//    final prefs = await SharedPreferences.getInstance();
-//    final key = 'my_int_key';
-//    final value = 42;
-//    prefs.setInt(key, value);
-//    print('saved: $value');
-//  }
-
-  // Database
-
   _read() async {
-    DatabaseHelper helper = DatabaseHelper.instance;
-    int rowId = 1;
-    Word word = await helper.queryWord(rowId);
-    if (word == null) {
-      print('read row $rowId: empty');
-    } else {
-      print('read row $rowId: ${word.word} ${word.frequency}');
-    }
+    final prefs = await SharedPreferences.getInstance();
+    final key = 'my_int_key';
+    final value = prefs.getInt(key) ?? 0;
+    print('read: $value');
   }
 
   _save() async {
-    Word word = Word();
-    word.word = 'hello';
-    word.frequency = 15;
-    DatabaseHelper helper = DatabaseHelper.instance;
-    int id = await helper.insert(word);
-    print('inserted row: $id');
+    final prefs = await SharedPreferences.getInstance();
+    final key = 'my_int_key';
+    final value = 42;
+    prefs.setInt(key, value);
+    print('saved: $value');
   }
+
+  // Database
+
+//  _read() async {
+//    // query one word
+//    DatabaseHelper helper = DatabaseHelper.instance;
+//    int rowId = 1;
+//    Word word = await helper.queryWord(rowId);
+//    if (word == null) {
+//      print('read row $rowId: empty');
+//    } else {
+//      print('read row $rowId: ${word.word} ${word.frequency}');
+//    }
+//
+//    // query all
+//    //
+//    //DatabaseHelper helper = DatabaseHelper.instance;
+//    //final words = await helper.queryAllWords();
+//    //if (words != null) {
+//    //  words.forEach((word) {
+//    //    print('row ${word.id}: ${word.word} ${word.frequency}');
+//    //  });
+//    //}
+//  }
+//
+//  _save() async {
+//    // insert
+//    Word word = Word();
+//    word.word = 'hello';
+//    word.frequency = 15;
+//    DatabaseHelper helper = DatabaseHelper.instance;
+//    int id = await helper.insert(word);
+//    print('inserted row: $id');
+//
+//    // update
+//    //
+//    //Word word = Word();
+//    //word.id = 1;
+//    //word.word = 'goodbye';
+//    //word.frequency = 594;
+//    //final helper = DatabaseHelper.instance;
+//    //int count = await helper.update(word);
+//    //print('updated $count row(s)');
+//
+//    // delete
+//    //
+//    //final helper = DatabaseHelper.instance;
+//    //int id = 1;
+//    //int count = await helper.deleteWord(id);
+//    //print('deleted $count row(s)');
+//  }
 
   // File
 

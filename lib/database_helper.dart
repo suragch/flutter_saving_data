@@ -104,7 +104,7 @@ class DatabaseHelper {
     return null;
   }
 
-  Future<List<Word>> queryAllWord() async {
+  Future<List<Word>> queryAllWords() async {
     Database db = await database;
     List<Map> maps = await db.query(tableWords);
     if (maps.length > 0) {
