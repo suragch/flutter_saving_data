@@ -104,8 +104,27 @@ class DatabaseHelper {
     return null;
   }
 
-  // TODO: queryAllWords()
-  // TODO: delete(int id)
-  // TODO: update(Word word)
+  Future<List<Word>> queryAllWord() async {
+    Database db = await database;
+    List<Map> maps = await db.query(tableWords);
+    if (maps.length > 0) {
+      List<Word> words = [];
+      maps.forEach((map) => words.add(Word.fromMap(map)));
+      return words;
+    }
+    return null;
+  }
+
+  Future<int> deleteWord(int id) async {
+    Database db = await database;
+    return await db.delete(tableWords, where: '$columnId = ?', whereArgs: [id]);
+  }
+
+  Future<int> update(Word word) async {
+    Database db = await database;
+    return await db.update(tableWords, word.toMap(),
+        where: '$columnId = ?', whereArgs: [word.id]);
+  }
+
 }
 
