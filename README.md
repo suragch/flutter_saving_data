@@ -6,7 +6,7 @@ A demo app in Flutter about saving data to local storage.
 - SQFlite database
 - File storage
 
-This is a supplement to the tutorial [How to save data locally in Flutter](TODO).
+This is a supplement to the tutorial [How to save data locally in Flutter](https://pusher.com/tutorials/local-data-flutter).
 
 ## Setup
 
